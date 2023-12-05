@@ -8,6 +8,7 @@ import {
   faCircleInfo,
   faFingerprint,
   faBookAtlas,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 
 export async function loader({ params }) {
@@ -31,6 +32,7 @@ function Findbook() {
 
   return (
     <div>
+        <h1>Here is the book you searched for <FontAwesomeIcon icon={faMagnifyingGlass} /></h1>
       {book != null ? (
         <div>
           <h2>
