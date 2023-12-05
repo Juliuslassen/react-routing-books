@@ -1,13 +1,68 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenNib, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { useState, useRef } from "react";
+import {
+  faPenNib,
+  faPaperPlane,
+  faBookOpen,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
+import bookFacade from "../facade/BookFacade";
+import { Form ,redirect } from "react-router-dom";
+
+
+/*
+export async function action() {
+    if (data.get("title") === "" || data.get("info") === "") {
+        alert("Please fill out the form!");
+        return;
+      } else {
+        try {
+          let book ={
+              id: "",
+            title: titleRef.current.value,
+            info: infoRef.current.value,
+          };
+          console.log("adding book: ", book);
+          await bookFacade.addBook(book);
+          titleRef.current.reset();
+          infoRef.current.reset();
+        } catch (error) {
+          console.log("Error adding book", error);
+        }
+  
+        return redirect("/${book.id}");
+      }
+    }
+*/
+
 
 function Addbook() {
-  const [book, setBook] = useState({ title: "", info: "" });
-  const title = useRef(null);
-  const info = useRef(null);
 
-  
+  const titleRef = useRef(null);
+  const infoRef = useRef(null);
+
+  const handleOnClick = async () => {
+    if (titleRef.current.value === "" || infoRef.current.value === "") {
+      alert("Please fill out the form!");
+      return;
+    } else {
+      try {
+        const book ={
+            id: "",
+          title: titleRef.current.value,
+          info: infoRef.current.value,
+        };
+        console.log("adding book: ", book);
+        await bookFacade.addBook(book);
+        titleRef.current.value = "";
+        infoRef.current.value = "";
+      } catch (error) {
+        console.log("Error adding book", error);
+      }
+      return redirect("/${book.id}");
+    }
+  };
+
   return (
     <div>
       <h1>
@@ -15,29 +70,37 @@ function Addbook() {
         You can add a new book!
       </h1>
       <div style={{ maxWidth: "300px", margin: "auto" }}>
-        <form
+        <Form
           style={{
             display: "flex",
             flexDirection: "column",
             textAlign: "center",
           }}
         >
+          <label htmlFor="title">
+            <FontAwesomeIcon icon={faBookOpen} />
+            Title
+          </label>
           <input
             type="text"
             name="title"
             placeholder="Title"
-            ref={title}
+            ref={titleRef}
             style={{
               marginBottom: "10px",
               padding: "5px",
               textAlign: "center",
             }}
           />
+          <label htmlFor="info">
+            <FontAwesomeIcon icon={faCircleInfo} />
+            info
+          </label>
           <input
             type="text"
             name="info"
             placeholder="Info"
-            ref={info}
+            ref={infoRef}
             style={{
               marginBottom: "10px",
               padding: "5px",
@@ -45,12 +108,7 @@ function Addbook() {
             }}
           />
           <button
-            onClick={() => {
-                setBook({title: title.current.value, info: info.current.value});
-                bookFacade.addBook(book);
-                title.current.value = "";
-                info.current.value = "";
-            }}
+            onClick={handleOnClick}
             style={{
               backgroundColor: "#007BFF",
               color: "#fff",
@@ -68,7 +126,7 @@ function Addbook() {
             />{" "}
             Submit
           </button>
-        </form>
+        </Form>
       </div>
     </div>
   );
