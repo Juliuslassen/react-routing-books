@@ -56,10 +56,11 @@ function Addbook() {
         await bookFacade.addBook(book);
         titleRef.current.value = "";
         infoRef.current.value = "";
+        return redirect("/{book.id}");
       } catch (error) {
         console.log("Error adding book", error);
       }
-      return redirect("/${book.id}");
+      return redirect("/");
     }
   };
 

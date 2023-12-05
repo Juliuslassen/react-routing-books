@@ -7,18 +7,20 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
-  isRouteErrorResponse,
+  
 } from "react-router-dom";
 import bookFacade from "./facade/BookFacade";
 import Addbook from "./pages/AddBook.jsx";
 import Findbook from "./pages/FindBook.jsx";
 import ErrorPage from "./pages/Errorpage.jsx";
+import Book,{loader as singleBookLoader} from "./pages/Book.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App bookFacade={bookFacade} />} errorElement={<ErrorPage/>}>
       <Route path="addbook" element={<Addbook />} />
       <Route path=":id" element={<Findbook />} />
+      <Route path="book/:id" element={<Book />} loader={singleBookLoader} />
     </Route>
   )
 );

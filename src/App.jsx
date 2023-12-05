@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import NavBarLayout from "./layout/NavBarLayout";
 
 function App({ bookFacade }) {
 
@@ -10,6 +10,7 @@ function App({ bookFacade }) {
 
   return (
     <>
+      <NavBarLayout />
       <h1>Bookstore</h1>
       <div>
         <div id="bookList" style={{ display: "flex", flexDirection: "column" }}>

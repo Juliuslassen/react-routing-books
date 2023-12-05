@@ -4,6 +4,9 @@ import bookFacade from "../facade/BookFacade";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen, faFeather, faCircleInfo, faFingerprint, faBookAtlas} from '@fortawesome/free-solid-svg-icons'
 
+
+
+
 function Findbook() {
 
     const { id } = useParams();
