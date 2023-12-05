@@ -1,16 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import bookFacade from "../facade/BookFacade";
 
 export function loader({params}) {
     const book = bookFacade.findBook(params.id);
-    if (book === null) {
-        return {error: "Book not found"};
-    } else
-        return {book};
-}
-
-export async function action({params}) {
-    const book = await bookFacade.findBook(params.id);
     if (book === null) {
         return {error: "Book not found"};
     } else
