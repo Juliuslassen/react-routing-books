@@ -1,10 +1,13 @@
-import { Link, NavLink, Navigate, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Addbook from "./pages/AddBook";
+
 
 function App({ bookFacade }) {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>Bookstore</h1>
@@ -19,7 +22,7 @@ function App({ bookFacade }) {
             );
           })}
         </div>
-        <button >Add a new book!</button>
+        <button onClick={() => navigate("addbook")}>Add a new book!</button>
         <Outlet />
       </div>
     </>
