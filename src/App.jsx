@@ -12,13 +12,13 @@ function App({ bookFacade }) {
     <>
       <h1>Bookstore</h1>
       <div>
-        <div id="">
+        <div id="bookList" style={{ display: "flex", flexDirection: "column" }}>
           {bookFacade.getBooks().map((book) => {
             return (
-              <Link key={book.id} to={"/" + book.id}>
-                <FontAwesomeIcon icon={faBook} /> {book.title} by {book.author}{" "}
-                {book.id}
-              </Link>
+              <NavLink key={book.id} to={"/" + book.id}>
+                <FontAwesomeIcon icon={faBook} /> {book.title} {" "}
+                {book.id} {" | "}
+              </NavLink>
             );
           })}
         </div>
