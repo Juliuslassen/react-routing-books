@@ -29,6 +29,7 @@ const NavBarLayout = () => {
 
   return (
     <div className="navbar-layout">
+      <p>V1.2</p>
       <nav>
         <NavLink to="/">Show all books</NavLink>
         <NavLink to="/addbook">Add book</NavLink>
