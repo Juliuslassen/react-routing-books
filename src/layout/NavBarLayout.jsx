@@ -14,7 +14,6 @@ export async function action({ params }) {
 const NavBarLayout = () => {
   const searchRef = useRef();
   const navigate = useNavigate();
-
   
   const handleOnSubmit = async () => {
     const bookId = searchRef.current.value;
@@ -22,18 +21,18 @@ const NavBarLayout = () => {
       alert("Please fill out the form!");
       return;
     } else {
-      navigate(`/${bookId}`);
+      navigate(`${bookId}`);
     }
   };
   
 
   return (
     <div className="navbar-layout">
-      <p>V1.2</p>
+      <p>V1.4</p>
       <nav>
         <NavLink to="/">Show all books</NavLink>
         <NavLink to="/addbook">Add book</NavLink>
-        <form id="search-form" method="get" onSubmit={handleOnSubmit}>
+        <form id="search-form" onSubmit={handleOnSubmit}>
           <input
             id="searchId"
             type="number"
@@ -41,7 +40,7 @@ const NavBarLayout = () => {
             ref={searchRef}
             placeholder="search for a book id"
           />
-        <button onClick={handleOnSubmit}>Search</button>
+        <button onClick={() => navigate(`${searchRef.current.value}`)}>Search</button>
         </form>
       </nav>
     </div>
