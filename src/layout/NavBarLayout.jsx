@@ -36,7 +36,7 @@ const NavBarLayout = () => {
           <input
             id="searchId"
             type="number"
-            name="searchId"
+            //name="searchId"
             ref={searchRef}
             placeholder="search for a book id"
           />
